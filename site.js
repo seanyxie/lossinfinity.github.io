@@ -5,7 +5,6 @@ const dialog = one('#viewer');
 const viewer = one('#viewer-body');
 const title = one('#dialog-title');
 const search = one('#search');
-const pictures = all('.media-tile[data-art]');
 let category = 'role';
 let kind = '';
 let opener;
@@ -51,6 +50,8 @@ function openViewer(label, content, trigger) {
   }
 }
 function showArt(slug, trigger) {
+  const gallery = trigger.closest('.screens-grid') || one('#media');
+  const pictures = all('.media-tile[data-art]', gallery);
   const index = pictures.findIndex(item => item.dataset.art === slug);
   const figure = document.createElement('div');
   const image = document.createElement('img');
